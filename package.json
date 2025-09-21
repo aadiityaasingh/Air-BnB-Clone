@@ -1,7 +1,7 @@
 {
   "name": "pro1",
   "version": "1.0.0",
-  "description": "",
+  "description": "currently working on it, i will update it as soon as possible",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,15 @@
     "express": "^5.1.0",
     "joi": "^18.0.1",
     "method-override": "^3.0.0",
-    "mongoose": "^8.18.0",
-    "path-to-regexp": "^0.1.7"
-  }
+    "mongoose": "^8.18.1",
+    "path-to-regexp": "^0.1.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aadiityaasingh/Air-BnB-Clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aadiityaasingh/Air-BnB-Clone/issues"
+  },
+  "homepage": "https://github.com/aadiityaasingh/Air-BnB-Clone#readme"
 }
