@@ -32,19 +32,18 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 const sessionOptions = {
   secret: "mysupersecretcode",
   resave: false,
   saveUninitialized: true,
   cookie: {
-    expires: Date.now() +7 * 24 * 60 * 60 * 1000, //miliseconds mein hai
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000, //miliseconds mein hai
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
-  }
+  },
 };
-
 
 app.get("/", (req, res) => {
   res.send("HI i am root");
@@ -55,16 +54,17 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate())); 
+passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use((req,res,next) => {
+app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currentUser = req.user;
   next();
-})
+});
 
 // app.get("/demouser" , async (req,res) => {
 //   let fakeUser = new User({
@@ -78,16 +78,16 @@ app.use((req,res,next) => {
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
-app.use("/", userRouter)
+app.use("/", userRouter);
 
-app.all(/.*/, (req,res,next) => {
+app.all(/.*/, (req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));
 });
 
 app.use((err, req, res, next) => {
-  let {statusCode=500, message="something went wrong"} = err;
-  res.status(statusCode).render("error.ejs",{message});
-})
+  let { statusCode = 500, message = "something went wrong" } = err;
+  res.status(statusCode).render("error.ejs", { message });
+});
 
 app.listen(8080, () => {
   console.log("server is running");
