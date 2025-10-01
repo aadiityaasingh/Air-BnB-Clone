@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV != "production"){
+  require("dotenv").config();
+
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -51,7 +56,7 @@ app.get("/", (req, res) => {
 
 app.use(session(sessionOptions));
 app.use(flash());
-
+7
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
