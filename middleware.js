@@ -42,7 +42,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
 
 module.exports.validateListing = (req, res, next) => {
   let {error} = listingSchema.validate(req.body); 
-  console.log(result);
+  console.log(res);
   if(error){
     let erMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, erMsg)
@@ -53,7 +53,7 @@ module.exports.validateListing = (req, res, next) => {
 
 module.exports.validateReview = (req, res, next) => {
   let {error} = reviewSchema.validate(req.body); 
-  console.log(result);
+  console.log(res);
   if(error){
     let erMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, erMsg)

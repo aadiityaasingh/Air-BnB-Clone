@@ -1,6 +1,5 @@
-if(process.env.NODE_ENV != "production"){
+if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
-
 }
 
 const express = require("express");
@@ -11,7 +10,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -43,16 +42,16 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "public")));
 
 const store = MongoStore.create({
-  mongoUrl:dbUrl,
+  mongoUrl: dbUrl,
   crypto: {
     secret: process.env.SECRET,
   },
   touchAfter: 24 * 3600,
-})
+});
 
 store.on("error", () => {
   console.log("ERROR in MONGO SESSION STORE", err);
-})
+});
 
 const sessionOptions = {
   store,
@@ -65,8 +64,6 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
-
-
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -84,16 +81,6 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
-
-// app.get("/demouser" , async (req,res) => {
-//   let fakeUser = new User({
-//     email : "studentfake@gmail.com",
-//     username : "studentfake"
-//   })
-
-//   let registeredUser = await User.register(fakeUser, "justlike");
-//   res.send(registeredUser);
-// })
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
