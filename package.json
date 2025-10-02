@@ -1,4 +1,8 @@
+
 {
+  "engines": {
+    "node": "22.14.0"
+  },
   "name": "pro1",
   "version": "1.0.0",
   "description": "currently working on it, i will update it as soon as possible",
@@ -13,6 +17,7 @@
   "dependencies": {
     "cloudinary": "^1.30.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
