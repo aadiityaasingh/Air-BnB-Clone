@@ -82,30 +82,33 @@
       </div>
       </div>
     </div>
-  <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
-    <% for(let listing of allListings) {%>
-        <a href="/listings/<%= listing._id %>" class="listing-link"></a>
-    <div class="card col listing-card">
-      <img
-        src="<%= listing.image.url %>"
-        class="card-img-top"
-        alt="listing-image"
-        style="height: 20rem;"
-      />
-      <div class="card-img-overlay">fdsfs</div>
-      <div class="card-body">
-        <p class="card-text">
-          <%= listing.title %> <br />
-          &#8377;<%= listing.price.toLocaleString("en-IN") %>
-          <i class="tax-info"> &nbsp; &nbsp;+18% GST</i>
-        </p>
-      </div>
+
+<div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3 justify-content-center">
+  <% for(let listing of allListings) { %>
+    <div class="col mb-4">
+      <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+        <div class="card listing-card h-100">
+          <img
+            src="<%= listing.image.url %>"
+            class="card-img-top"
+            alt="listing-image"
+            style="height: 20rem; object-fit: cover;"
+          />
+          <div class="card-body">
+            <p class="card-text">
+              <%= listing.title %> <br />
+              &#8377;<%= listing.price.toLocaleString("en-IN") %>
+              <i class="tax-info"> &nbsp; &nbsp;+18% GST</i>
+            </p>
+          </div>
+        </div>
+      </a>
     </div>
-    <%}%>
-  </div>
+  <% } %>
+</div>
 
   <script>
-    let taxSwitch = document.getElementById("flexSwitchCheckDefault")
+    let taxSwitch = document.getElementById("switchCheckDefault")
     taxSwitch.addEventListener("click", () => {
       let taxInfo = document.getElementsByClassName("tax-info");
       for (info of taxInfo) {
