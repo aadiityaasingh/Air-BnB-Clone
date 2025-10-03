@@ -18,16 +18,20 @@
   </div>
   </div>
   <br>
-  <%if(currentUser && listing.owner._id.equals(currentUser._id)) { %>
-<div class="btns">
-    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-2 edit-btn">Edit</a>
+ <% if (currentUser && listing.owner._id.equals(currentUser._id)) { %>
+  <div class="d-flex gap-2 mt-3">
+    <a href="/listings/<%= listing._id %>/edit" class="btn btn-warning btn-sm">
+      ✏️ Edit
+    </a>
 
- 
-    <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
-        <button class="btn btn-dark offset-4">Delete</button>
+    <form method="post" action="/listings/<%= listing._id %>?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this listing?');">
+      <button type="submit" class="btn btn-danger btn-sm">
+        🗑️ Delete
+      </button>
     </form>
-    </div>
+  </div>
 <% } %>
+
 
 
     
@@ -37,12 +41,7 @@
       <h4>Leave a Review</h4>
       <form action="/listings/<%= listing._id %>/reviews" method="POST" novalidate class="needs-validation">
 
-        <!-- <div class="mb-3 mt-3">
-          <label for="rating" class="form-label">Rating</label>
-          <input type="range" min="1" max="6" id="rating" name="review[rating]" class="form-range">
-        </div> -->
-
-        
+       
         <div class="mb-3 mt-3">
           <label for="rating" class="form-label">Rating</label>
         <fieldset class="starability-slot">
