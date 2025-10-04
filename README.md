@@ -3,7 +3,7 @@
 
 A full-stack Airbnb clone built with Node.js, Express, EJS, Bootstrap, and MongoDB Atlas. This project implements user authentication, CRUD operations for listings, reviews, image uploads, and session management, providing a complete web application experience similar to Airbnb.
 
-🚀 Features
+# 🚀 Features
 
 ✅User Authentication
 ✅Sign up, login, and logout functionality using Passport.js.
@@ -21,7 +21,7 @@ A full-stack Airbnb clone built with Node.js, Express, EJS, Bootstrap, and Mongo
 
 
 
-💻Tech Stack
+### 💻Tech Stack
 
 Backend: Node.js, Express.js
 Frontend: EJS, Bootstrap 5
@@ -32,3 +32,4 @@ Session Management: express-session
 
 
 
+Deployed website link - https://air-bn-b-clone-kappa.vercel.app/
